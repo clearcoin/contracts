@@ -1,7 +1,7 @@
 pragma solidity ^0.4.11;
 
 interface IERC20 {
-  function totalSupply () constant returns (uint256 totalSupply);
+  function totalSupply() constant returns (uint256 totalSupply);
   function balanceOf(address _owner) constant returns (uint256 balance);
   function transfer(address _to, uint256 _value) returns (bool success);
   function transferFrom(address _from, address _to, uint256 _value) returns (bool success);
@@ -15,7 +15,7 @@ contract ClearCoin is IERC20 {
 
   uint public constant _totalSupply = 100000000000000000;
 
-  string public constant symbol ="XCLR";
+  string public constant symbol = "XCLR";
   string public constant name = "ClearCoin";
   uint8 public constant decimals = 8;
 
@@ -48,7 +48,7 @@ contract ClearCoin is IERC20 {
   function transferFrom(address _from, address _to, uint256 _value) returns (bool success) {
     require(
       allowed[_from][msg.sender] >= _value
-      && balances [_from] > _value
+      && balances[_from] > _value
       && _value > 0
     );
     balances[_from] -= _value;
