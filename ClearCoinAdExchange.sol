@@ -28,7 +28,10 @@ contract ClearCoinAdExchange {
     function changeOwner(address new_owner) public onlyOwner {
         owner = new_owner;
     }
-    
+
+    /*
+     * Demand-side (Advertiser)
+     */
     struct LineItem {
         uint256 budget;          // when XCLR is transferred to this line item, it's budget increases; eventually the publisher will get paid from the budget
         string destination_url;  // clicks on creative point here
@@ -84,7 +87,11 @@ contract ClearCoinAdExchange {
         
         emit lineItemActivated(msg.sender);
     }
-    
+
+
+    /*
+     * Supply-side (Publisher)
+     */
     struct AdSlot {
         string domain;          // domain name of website
         uint256 creative_type;  // (1,2,3) => leaderboard (728x90), skyscraper (120x600), medium rectangle (300x250)
